@@ -1,3 +1,5 @@
+# chatbot.py
+
 import os
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.vectorstores import Qdrant
@@ -6,6 +8,7 @@ from qdrant_client import QdrantClient
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain.chains import RetrievalQA
 import streamlit as st
+from langchain_core.messages.ai import AIMessage
 
 class ChatbotManager:
     def __init__(
@@ -120,3 +123,61 @@ class ChatbotManager:
         except Exception as e:
             st.error(f"⚠️ An error occurred while processing your request: {e}")
             return "⚠️ Sorry, I couldn't process your request at the moment."
+
+# ==================== #
+# I added this section #
+# ==================== #
+
+# CyberBotManager: Subclass for Cybersecurity-Specific Interactions
+class CyberBotManager:
+    """A simple conversational manager for a cybersecurity chatbot."""
+
+    def __init__(self, llm_model: str = "llama3.2:3b", llm_temperature: float = 0.7):  # Fixed default model
+        """
+        Initializes the CyberBotManager with a fine-tuned LLM.
+
+        Args:
+            llm_model (str): The model name for the fine-tuned LLM.
+            llm_temperature (float): Temperature for response variability.
+        """
+        self.llm_model = llm_model
+        self.llm_temperature = llm_temperature
+
+        try:
+            # Initialize the Local LLM (fine-tuned model for cybersecurity)
+            self.llm = ChatOllama(
+                model=self.llm_model,
+                temperature=self.llm_temperature,
+            )
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize LLM: {e}")
+
+    def get_response(self, query: str) -> str:
+        """
+        Generates a response for the user's query.
+
+        Args:
+            query (str): The user's input question.
+
+        Returns:
+            str: The chatbot's response.
+        """
+        try:
+            # Pass the query directly to the invoke method
+            response = self.llm.invoke(query)
+            print(f"LLM response: {response}")  # Debugging output
+
+            # Check if response is an AIMessage and extract its content
+            if isinstance(response, AIMessage):
+                print("Response type: AIMessage")
+                return response.content
+
+            # Handle unexpected formats
+            else:
+                print(f"Response type: {type(response)}")
+                return f"⚠️ Unexpected response format from LLM: {type(response)}"
+
+        except Exception as e:
+            print(f"Error during LLM invocation: {e}")
+            return f"⚠️ Error processing query: {e}"
+

@@ -7,6 +7,7 @@ import base64
 import os
 from vectors import EmbeddingsManager  # Import the EmbeddingsManager class
 from chatbot import ChatbotManager     # Import the ChatbotManager class
+from chatbot import CyberBotManager
 
 # Function to display the PDF of a given file
 def displayPDF(file):
@@ -15,6 +16,7 @@ def displayPDF(file):
 
     # Embedding PDF in HTML
     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf"></iframe>'
+    
 
     # Displaying the PDF
     st.markdown(pdf_display, unsafe_allow_html=True)
@@ -25,6 +27,9 @@ if 'temp_pdf_path' not in st.session_state:
 
 if 'chatbot_manager' not in st.session_state:
     st.session_state['chatbot_manager'] = None
+
+if 'cyberbot_manager' not in st.session_state:
+    st.session_state['cyberbot_manager'] = None
 
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
@@ -44,7 +49,7 @@ with st.sidebar:
     st.markdown("---")
     
     # Navigation Menu
-    menu = ["🏠 Home", "🤖 Chatbot", "📧 Contact", "🛡️	CyberBot"]
+    menu = ["🏠 Home", "🤖 Chatbot", "🛡️ CyberBot", "📧 Contact"]
     choice = st.selectbox("Navigate", menu)
 
 # Home Page
@@ -139,6 +144,7 @@ elif choice == "🤖 Chatbot":
     # Column 3: Chatbot Interface
     with col3:
         st.header("💬 Chat with Document")
+        st.marker("🧠 You can ask the bot to create cyber security questions and answers based on the PDF you uploaded")
         
         if st.session_state['chatbot_manager'] is None:
             st.info("🤖 Please upload a PDF and create embeddings to start chatting.")
@@ -165,6 +171,58 @@ elif choice == "🤖 Chatbot":
                 st.chat_message("assistant").markdown(answer)
                 st.session_state['messages'].append({"role": "assistant", "content": answer})
 
+# CyberBot Page
+# CyberBot Page
+elif choice == "🛡️ CyberBot":
+    st.title("🛡️ Cyber Security Chatbot (Llama3.2:3b)")
+    st.markdown("---")
+
+    # Initialize chat history in session state
+    if "cyberbot_chat_history" not in st.session_state:
+        st.session_state["cyberbot_chat_history"] = []  # I added this
+
+    st.markdown("### 💬 Chat with CyberBot")
+    user_input = st.text_input("Ask a cybersecurity-related question")
+
+    if user_input:
+        if st.session_state["cyberbot_manager"] is None:
+            try:
+                # Initialize the CyberBotManager with a fine-tuned LLM
+                st.session_state["cyberbot_manager"] = CyberBotManager(
+                    llm_model="llama3.2:3b"
+                )
+                st.success("🤖 CyberBot initialized successfully!")
+            except Exception as e:
+                st.error(f"⚠️ Error initializing CyberBot: {e}")
+                st.stop()
+
+        with st.spinner("CyberBot is thinking..."):
+            try:
+                # Get response from the bot
+                response = st.session_state["cyberbot_manager"].get_response(user_input)
+
+                # Append user input and bot response to chat history
+                st.session_state["cyberbot_chat_history"].append({"role": "user", "content": user_input})  # I added this
+                st.session_state["cyberbot_chat_history"].append({"role": "assistant", "content": response})  # I added this
+
+                st.success(response)
+
+            except Exception as e:
+                st.error(f"⚠️ Error generating response: {e}")
+
+    # Display chat history
+    st.markdown("### Chat History")
+    for chat in st.session_state["cyberbot_chat_history"]:
+        if chat["role"] == "user":
+            st.markdown(f"**You:** {chat['content']}")
+        else:
+            st.markdown(f"**CyberBot:** {chat['content']}")
+
+
+
+
+
+
 # Contact Page
 # elif choice == "📧 Contact":
 #     st.title("📬 Contact Us")
@@ -179,4 +237,4 @@ elif choice == "🤖 Chatbot":
 
 # Footer
 st.markdown("---")
-# st.markdown("© 2024 Document Buddy App by AI Anytime. All rights reserved. 🛡️")
+# st.markdown("© 2024 Cyber Bot AI by "Company" All rights reserved. 🛡️")
