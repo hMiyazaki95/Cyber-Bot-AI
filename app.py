@@ -144,7 +144,7 @@ elif choice == "🤖 Chatbot":
     # Column 3: Chatbot Interface
     with col3:
         st.header("💬 Chat with Document")
-        st.marker("🧠 You can ask the bot to create cyber security questions and answers based on the PDF you uploaded")
+        st.write("🧠 You can ask the bot to create cyber security questions and answers based on the PDF you uploaded")
         
         if st.session_state['chatbot_manager'] is None:
             st.info("🤖 Please upload a PDF and create embeddings to start chatting.")
