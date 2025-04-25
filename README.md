@@ -101,7 +101,7 @@ Submit a pull request on GitHub.
 Cyber-Bot-AI is licensed under the MIT License — free to use, modify, and distribute.
 
 📬 Contact Info
-Email: hmiyazakiemail06@gmail.com ✉️
+Email: hmiyazakiemail6@gmail.com ✉️
 Reach out for feedback, contributions, or just to say hi!
 
 © 2024 Cyber-Bot-AI by AI Anytime. All rights reserved. 🛡️
