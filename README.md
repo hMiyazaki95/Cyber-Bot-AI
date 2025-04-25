@@ -1,155 +1,120 @@
-# 📄 Document Buddy App
+📘 SmartDoc Assistant
 
-![Cyber-Bot-AI](sct.png)
 
-**Document Buddy App** is a powerful Streamlit-based application designed to simplify document management. Upload your PDF documents, create embeddings for efficient retrieval, and interact with your documents through an intelligent chatbot interface. 🚀
+SmartDoc Assistant is an innovative, user-centric application built with Streamlit. It allows users to manage, analyze, and interact with PDF documents through an intuitive chatbot powered by modern AI and vector technology. 🔍📄
 
-## 🛠️ Features
+🔧 Core Capabilities
+📁 Document Upload: Quickly import and preview your PDF files.
 
-- **📂 Upload Documents**: Easily upload and preview your PDF documents within the app.
-- **🧠 Create Embeddings**: Generate embeddings for your documents to enable efficient search and retrieval.
-- **🤖 Chatbot Interface**: Interact with your documents using a smart chatbot that leverages the created embeddings.
-- **📧 Contact**: Get in touch with the developer or contribute to the project on GitHub.
-- **🌟 User-Friendly Interface**: Enjoy a sleek and intuitive UI with emojis and responsive design for enhanced user experience.
+📊 Embedding Generation: Seamlessly convert documents into embeddings for fast and relevant retrieval.
 
-## 🖥️ Tech Stack
+💬 Conversational Interface: Ask document-related questions via an AI-driven chat system.
 
-The Document Buddy App leverages a combination of cutting-edge technologies to deliver a seamless and efficient user experience. Here's a breakdown of the technologies and tools used:
+📣 Connect & Collaborate: Easily reach the developer or contribute to the open-source project.
 
-- **[LangChain](https://langchain.readthedocs.io/)**: Utilized as the orchestration framework to manage the flow between different components, including embeddings creation, vector storage, and chatbot interactions.
-  
-- **[Unstructured](https://github.com/Unstructured-IO/unstructured)**: Employed for robust PDF processing, enabling the extraction and preprocessing of text from uploaded PDF documents.
-  
-- **[BGE Embeddings from HuggingFace](https://huggingface.co/BAAI/bge-small-en)**: Used to generate high-quality embeddings for the processed documents, facilitating effective semantic search and retrieval.
-  
-- **[Qdrant](https://qdrant.tech/)**: A vector database running locally via Docker, responsible for storing and managing the generated embeddings for fast and scalable retrieval.
-  
-- **[LLaMA 3.2 via Ollama](https://ollama.com/)**: Integrated as the local language model to power the chatbot, providing intelligent and context-aware responses based on the document embeddings.
-  
-- **[Streamlit](https://streamlit.io/)**: The core framework for building the interactive web application, offering an intuitive interface for users to upload documents, create embeddings, and interact with the chatbot.
+💡 Sleek Design: Enjoy a clean, emoji-enhanced layout that ensures a delightful user journey.
 
-## 📁 Directory Structure
+⚙️ Technology Stack
+SmartDoc Assistant is powered by a synergy of modern tools and frameworks:
 
+
+Tool	Purpose
+LangChain	Coordinates components like embedding, storage, and LLM interaction
+Unstructured	Extracts text from PDF files for processing
+BGE Small Embeddings – HuggingFace	Creates semantic embeddings for document understanding
+Qdrant	A local vector DB (Docker-based) that stores and retrieves embeddings
+LLaMA 3.2 via Ollama	Runs the local language model to fuel intelligent document chat
+Streamlit	Provides the interactive web UI for user interaction
+📂 App Layout
+Project Directory:
+
+cpp
+Copy
 document_buddy_app/
-```
-│── logo.png
+├── logo.png
 ├── new.py
 ├── vectors.py
 ├── chatbot.py
 ├── requirements.txt
-```
+🚀 How to Launch Locally
+Follow the steps below to get SmartDoc Assistant up and running on your system.
 
-## 🚀 Getting Started
-
-Follow these instructions to set up and run the Document Buddy App on your local machine.
-
-### 1. Clone the Repository
-
-```bash
+1. Clone the GitHub Repository
+bash
+Copy
 git clone https://github.com/AIAnytime/Document-Buddy-App.git
 cd Document-Buddy-App
+2. Set Up a Virtual Environment
+Option A: Python venv
+Windows:
 
-2. Create a Virtual Environment
-
-You can either use Python’s venv or Anaconda to create a virtual environment for managing dependencies.
-
-Option 1: Using venv
-
-On Windows:
-
+bash
+Copy
 python -m venv venv
 venv\Scripts\activate
+macOS/Linux:
 
-On macOS and Linux:
-
+bash
+Copy
 python3 -m venv venv
 source venv/bin/activate
-
-Option 2: Using Anaconda
-
-Follow these steps to create a virtual environment using Anaconda:
-
-	1.	Open the Anaconda Prompt.
-	2.	Create a new environment:
-
+Option B: Using Anaconda
+bash
+Copy
 conda create --name document_buddy python=3.9
-
-(Replace document_buddy with your preferred environment name if desired).
-
-	3.	Activate the newly created environment:
-
 conda activate document_buddy
-
-
-
-3. Install Dependencies
-
-Once the environment is set up (whether venv or Conda), install the required dependencies using requirements.txt:
-
+3. Install Required Packages
+bash
+Copy
 pip install -r requirements.txt
-
-4. Run the App
-
-Start the Streamlit app using the following command:
-
+4. Start the App
+bash
+Copy
 streamlit run new.py
+Replace new.py with your main file name if it differs. The app will typically open in your browser at http://localhost:8501.
 
-Note: If your main application file is named differently, replace new.py with your actual file name (e.g., app.py).
+🤝 How to Contribute
+Contributions are always encouraged! Follow these simple steps:
 
-This command will launch the app in your default web browser. If it doesn’t open automatically, navigate to the URL provided in the terminal (usually http://localhost:8501).
-```
+Fork the repository
 
-### 🤝 Contributing
+Clone your fork locally
 
-Contributions are welcome! Whether it’s reporting a bug, suggesting a feature, or submitting a pull request, your input is highly appreciated. Follow these steps to contribute:
+Create a new branch:
 
-1.	Fork the Repository: Click on the “Fork” button at the top-right corner of the repository page.
-2.	Clone Your Fork
-3.	Create a New Branch:
-
-```
+bash
+Copy
 git checkout -b feature/YourFeatureName
-```
+Make changes and commit:
 
+bash
+Copy
+git commit -m "Describe your feature"
+Push the branch:
 
-4.	Make Your Changes: Implement your feature or fix.
-5.	Commit Your Changes:
-
-```
-git commit -m "Add Your Feature Description"
-```
-
-
-6.	Push to Your Fork:
-
-```
+bash
+Copy
 git push origin feature/YourFeatureName
-```
+Submit a pull request via GitHub to the original repo.
 
+📝 License
+Licensed under the MIT License — feel free to use, share, and improve!
 
-7.	Create a Pull Request: Navigate to the original repository and create a pull request from your fork.
+📬 Contact the Developer
+Email: hmiyazakiemail06@gmail.com
 
-### 📄 License
+For queries, collaborations, or ideas, don't hesitate to reach out! ✉️
 
-This project is licensed under the MIT License.
+© 2024 SmartDoc Assistant by AI Anytime. All rights reserved. 🛡️
 
-### 📫 Contact
+🔗 Helpful Documentation
+Streamlit
 
-•	Email: hmiyazakiemail06@gmail.com ✉️
+LangChain
 
-Feel free to reach out for any queries, suggestions, or contributions. Your feedback is invaluable!
+Qdrant
 
-© 2024 Document Buddy App by AI Anytime. All rights reserved. 🛡️
+ChatOllama
 
-### 🔗 Useful Links
+Happy building! 💻✨
 
-
-•	Streamlit Documentation: https://docs.streamlit.io/
-
-•	LangChain Documentation: https://langchain.readthedocs.io/
-
-•	Qdrant Documentation: https://qdrant.tech/documentation/
-
-•	ChatOllama Documentation: https://github.com/langchain-ai/langchain-llms#ollama
-
-Happy coding! 🚀✨
