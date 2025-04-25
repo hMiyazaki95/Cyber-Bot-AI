@@ -1,6 +1,4 @@
 🤖 Cyber-Bot-AI
-
-
 Cyber-Bot-AI is an advanced Streamlit-powered platform designed to streamline your PDF document interaction. Upload files, generate smart embeddings for efficient querying, and chat directly with your documents using a powerful AI assistant. 🚀
 
 🧰 Key Features
@@ -17,6 +15,7 @@ Cyber-Bot-AI is an advanced Streamlit-powered platform designed to streamline yo
 🧪 Technology Overview
 Cyber-Bot-AI is built using a combination of high-performance tools that ensure seamless document interaction:
 
+<div style="overflow-x: auto; white-space: nowrap;">
 
 Technology	Function
 LangChain	Manages flow between vector operations and AI interactions
@@ -25,9 +24,8 @@ BGE Embeddings via HuggingFace	Produces semantic embeddings from documents
 Qdrant	Local vector database (Docker-powered) for storing and querying embeddings
 LLaMA 3.2 with Ollama	Acts as the core language model for answering document-based queries
 Streamlit	Delivers an intuitive front-end for seamless user interaction
+</div>
 📁 Folder Structure
-Project layout for easy navigation:
-
 cpp
 Copy
 cyber_bot_ai/
@@ -46,7 +44,6 @@ git clone https://github.com/AIAnytime/Document-Buddy-App.git
 cd Document-Buddy-App
 Step 2: Create a Virtual Environment
 Option A: Using Python venv
-
 Windows:
 
 bash
@@ -60,7 +57,6 @@ Copy
 python3 -m venv venv
 source venv/bin/activate
 Option B: With Anaconda
-
 bash
 Copy
 conda create --name cyber_bot python=3.9
@@ -73,7 +69,7 @@ Step 4: Run the Application
 bash
 Copy
 streamlit run new.py
-Adjust the filename if different (e.g., app.py). Open http://localhost:8501 in your browser if it doesn’t launch automatically.
+If your file name differs, replace new.py accordingly. Open http://localhost:8501 if it doesn't launch automatically.
 
 👨‍💻 Contribute to Cyber-Bot-AI
 Want to add a feature or fix something? Here’s how to contribute:
@@ -106,17 +102,15 @@ Cyber-Bot-AI is licensed under the MIT License — free to use, modify, and dist
 
 📬 Contact Info
 Email: hmiyazakiemail06@gmail.com ✉️
-
 Reach out for feedback, contributions, or just to say hi!
 
 © 2024 Cyber-Bot-AI by AI Anytime. All rights reserved. 🛡️
 
 🔗 References & Docs
-Streamlit Docs
+📘 Streamlit Docs
 
-LangChain Guide
+🔗 LangChain Guide
 
-Qdrant Docs
+📊 Qdrant Docs
 
-Ollama via LangChain
-
+🤖 Ollama with LangChain
